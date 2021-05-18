@@ -16,7 +16,7 @@ function App() {
       await fetch("https://covid19-api.com/country/all?format=json")
         .then((responce) => responce.json())
         .then((data) => {
-          const piData = data.filter(ele => ele.code == 'IN' || ele.code == 'US');
+          const piData = data.filter(ele => ele.code === 'IN' || ele.code === 'US');
           const sortedData = sortData(data);
           setTableData(sortedData);
           setpichart(piData);
@@ -31,7 +31,6 @@ function App() {
     <div className="app">
       <div className="app__left">
 
-        {/* Header */}
         <h1>COVID 19 TRACKER</h1>
         <Card className="">
 
@@ -41,9 +40,10 @@ function App() {
           </CardContent>
 
           <CardContent>
-            <h3>Contrywise Cases</h3>
-
-            <Pie GraphData={pichart} />
+            <h3>Country wise cases</h3>
+            <div>
+              <Pie GraphData={pichart} />
+            </div>
           </CardContent>
         </Card>
       </div>
